@@ -1,5 +1,6 @@
 .metadata/
 JMCh02Exer/*.class
+*.in
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
