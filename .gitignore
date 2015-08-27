@@ -1,5 +1,8 @@
 .metadata/
 *.class
+*.classpath
+*.project
+*.doc
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
