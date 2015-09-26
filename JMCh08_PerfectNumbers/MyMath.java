@@ -71,15 +71,15 @@ public class MyMath {
      */
     public static boolean isPerfect(int n) {
         int sum = 0;
-		
+        
         for (int i = 1; i < n; i++) {
-			
+                    
             if (n % i == 0 ) {
                 sum += i;
-				
+                            
             }
         }
-		
+                
         return sum == n;
 
     }
@@ -112,16 +112,14 @@ public class MyMath {
         System.out.println("Mersenne primes: ");
 
         int currentNum = 0;
-        int i = 0;
-        while (currentNum <= n) {
-            int num = (int)Math.pow(2, i) - 1;
-            if (isPrime(num)) {
-                System.out.println(num);
+        for (int i = 2; n > currentNum; i++) {
+            int temp = (int) Math.pow(2, i) - 1;
+            if (isPrime(temp)) {
+                System.out.println(temp);
                 currentNum++;
             }
-            i++;
-			
         }
+        
 
         System.out.println();
     }
@@ -135,20 +133,23 @@ public class MyMath {
         System.out.println("Even perfect numbers: ");
 
         int currentNum = 0;
-        int i = 0;
-        while (currentNum <= n) {
-            int num = (int)Math.pow(2, i) - 1;
-			
-            if (isPrime(num)) {
-                long perfNumber = (long)Math.pow(2, i - 1);
-                System.out.println(perfNumber * num);
+        for (int i = 2; n > currentNum; i++ ) {
+            
+            int temp = (int) Math.pow(2, i) - 1;
+            
+            if (isPrime(temp)) {
+                        
+                long perfNumber = (long)(temp * Math.pow(2,  i - 1));
+                System.out.println(perfNumber + " ");
                 currentNum++;
+                
             }
-            i++;
-			
         }
-
+                  
+            
+   
         System.out.println();
+        
     }
 
     /**
@@ -162,6 +163,9 @@ public class MyMath {
         printPerfectNums(4);
         printMersennePrimes(6);
         printEvenPerfectNums(6);
+        
+        
+
     }
 }
 /*
