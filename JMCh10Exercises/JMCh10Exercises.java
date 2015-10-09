@@ -45,7 +45,7 @@ public class JMCh10Exercises {
 
 	// 10-6
 	public String scroll(String s) {
-		return s.substring(1, s.length() - 1) + s.charAt(0);
+		return s.substring(1, s.length()) + s.charAt(0);
 	}
 
 	// 10-7
@@ -103,8 +103,9 @@ public class JMCh10Exercises {
 
 	// 10-15
 	public boolean onlyDigits(String s) {
+
 		try {
-			Integer.parseInt(s);
+			Double.parseDouble(s);
 			return true;
 		} catch (NumberFormatException e) {
 			return false;
@@ -118,11 +119,13 @@ public class JMCh10Exercises {
 		int sum = 0;
 		for (int i = 0; i < temp.length - 1; i++) {
 			sum += (10 - i) * Character.digit(temp[i], 10);
+
 		}
+
 		if ((sum + 10) % 11 == 0 && temp[9] == 'X') {
 			ans = true;
 		}
-		if (sum + Character.digit(temp[9], 10) % 11 == 0) {
+		if ((sum + Character.digit(temp[9], 10)) % 11 == 0) {
 			ans = true;
 		}
 
@@ -131,18 +134,31 @@ public class JMCh10Exercises {
 
 	// 10-22
 	public String shuffle(String s) {
-		String ans = s;
+
+		StringBuffer ans = new StringBuffer(s);
+		int n = ans.length()-1;
+		
 		Random rand = new Random();
-		StringBuffer temp = new StringBuffer(s);
-		int n = temp.length() - 1;
+		
 		while (n > 1) {
-			int r = rand.nextInt(n + 1);
-			System.out.println(r);
-			temp = temp.replace(n, n + 1, temp.charAt(r) + "");
+			//char at n-1
+			char temp = s.charAt(n);
+			//pick random number among first n
+			int index = rand.nextInt(n) ;
+			//swap the random char with the char at n-1
+			ans.setCharAt(n , s.charAt(index));		
+			ans.setCharAt(index, temp);
+			
 			n--;
 		}
-		ans = temp.toString();
-		return ans;
+
+//		if (s.equals("abcd")) 
+//		{
+//			return "";
+//		}
+		
+		return ans.toString();
+
 	}
 
 	/**
@@ -198,7 +214,7 @@ public class JMCh10Exercises {
 							"endsWith2Stars(" + endsWith1Star + ") = " + exercise.endsWith2Stars(endsWith1Star));
 					break;
 				case '3':
-					String scrollStr = "bdfhjlnprtvxz";
+					String scrollStr = "Iscroll-";
 					System.out.println("scroll(\"" + scrollStr + "\") --> " + "\"" + exercise.scroll(scrollStr) + "\"");
 					break;
 				case '4':
@@ -244,14 +260,14 @@ public class JMCh10Exercises {
 					break;
 				case 'B':
 				case 'b':
-					String validISBN = "096548534X";
+					String validISBN = "0972705570";
 					String invalidISBN = "1234567890";
 					System.out.println("isValidISBN(\"" + validISBN + "\") = " + exercise.isValidISBN(validISBN));
 					System.out.println("isValidISBN(\"" + invalidISBN + "\") = " + exercise.isValidISBN(invalidISBN));
 					break;
 				case 'C':
 				case 'c':
-					String str = "The quick brown fox";
+					String str = "abcd";
 					System.out.println("shuffle(\"" + str + "\") --> " + "\"" + exercise.shuffle(str) + "\"");
 					System.out.println("shuffle(\"" + str + "\") --> " + "\"" + exercise.shuffle(str) + "\"");
 					break;
