@@ -135,30 +135,22 @@ public class JMCh10Exercises {
 	// 10-22
 	public String shuffle(String s) {
 
-		StringBuffer ans = new StringBuffer(s);
-		int n = ans.length()-1;
-		
-		Random rand = new Random();
-		
-		while (n > 1) {
-			//char at n-1
-			char temp = s.charAt(n);
-			//pick random number among first n
-			int index = rand.nextInt(n) ;
-			//swap the random char with the char at n-1
-			ans.setCharAt(n , s.charAt(index));		
-			ans.setCharAt(index, temp);
-			
-			n--;
-		}
+		StringBuffer ans = new StringBuffer( s );
+		int n = ans.length();
+        for ( ; n > 1; n-- )
+        {
+        	char index = ans.charAt( n - 1 );
+        	
+            int randomChar = (int)( Math.random() * n );
+        
+            ans.setCharAt( n - 1, ans.charAt( randomChar ) );
+            
+            
+            ans.setCharAt( randomChar, index );
+        }
 
-//		if (s.equals("abcd")) 
-//		{
-//			return "";
-//		}
+        return ans.toString();
 		
-		return ans.toString();
-
 	}
 
 	/**
