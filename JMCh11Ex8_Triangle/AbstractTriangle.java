@@ -13,58 +13,69 @@
  * 
  * @author Sources - Kushal Tirumala
  */
-public abstract class AbstractTriangle {
-	/**
-	 * side of the triangle
-	 */
-	public double side;
+public abstract class AbstractTriangle
+{
+    /**
+     * side of the triangle
+     */
+    public double side;
 
-	/**
-	 * parameter constructor
-	 * 
-	 * @param side
-	 *            side of triangle
-	 */
-	public AbstractTriangle(double side) {
-		this.side = side;
-	}
 
-	/**
-	 * no parameter constructor
-	 */
-	public AbstractTriangle() {
-		// no parameters
-	}
+    /**
+     * parameter constructor
+     * 
+     * @param side
+     *            side of triangle
+     */
+    public AbstractTriangle( double side )
+    {
+        this.side = side;
+    }
 
-	/**
-	 * area of triangle
-	 * 
-	 * @return area
-	 */
-	public abstract double getArea();
 
-	/**
-	 * perimeter of triangle
-	 * 
-	 * @return triangle
-	 */
-	public abstract double getPerimeter();
+    /**
+     * no parameter constructor
+     */
+    public AbstractTriangle()
+    {
+        // no parameters
+    }
 
-	/**
-	 * ratio of area to perimeter
-	 * 
-	 * @return ratio
-	 */
-	public double getRatio() {
-		return getArea() / getPerimeter();
-	}
 
-	/**
-	 * getter method for the side field
-	 * 
-	 * @return side of triangle
-	 */
-	public double getSide() {
-		return side;
-	}
+    /**
+     * area of triangle
+     * 
+     * @return area
+     */
+    public abstract double getArea();
+
+
+    /**
+     * perimeter of triangle
+     * 
+     * @return triangle
+     */
+    public abstract double getPerimeter();
+
+
+    /**
+     * ratio of area to perimeter
+     * 
+     * @return ratio
+     */
+    public double getRatio()
+    {
+        return getArea() / getPerimeter();
+    }
+
+
+    /**
+     * getter method for the side field
+     * 
+     * @return side of triangle
+     */
+    public double getSide()
+    {
+        return side;
+    }
 }

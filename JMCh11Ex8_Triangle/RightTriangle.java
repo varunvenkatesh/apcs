@@ -10,40 +10,48 @@
  * 
  * @author Sources - Kushal Tirumala
  */
-public class RightTriangle extends AbstractTriangle {
-	/**
-	 * no parameter contructor
-	 */
-	public RightTriangle() {
-		// no parameter
-	}
+public class RightTriangle extends AbstractTriangle
+{
+    /**
+     * no parameter contructor
+     */
+    public RightTriangle()
+    {
+        // no parameter
+    }
 
-	/**
-	 * side constructor
-	 * 
-	 * @param side
-	 *            side of triangle
-	 */
-	public RightTriangle(double side) {
-		super(side);
-	}
 
-	/**
-	 * returns the area of the triangle
-	 * 
-	 * @return area
-	 */
-	public double getArea() {
-		return side * side / 2;
-	}
+    /**
+     * side constructor
+     * 
+     * @param side
+     *            side of triangle
+     */
+    public RightTriangle( double side )
+    {
+        super( side );
+    }
 
-	/**
-	 * returns the perimeter of the triangle
-	 * 
-	 * @return perimeter
-	 */
-	public double getPerimeter() {
-		return side * (2 + Math.sqrt(2));
-	}
+
+    /**
+     * returns the area of the triangle
+     * 
+     * @return area
+     */
+    public double getArea()
+    {
+        return side * side / 2;
+    }
+
+
+    /**
+     * returns the perimeter of the triangle
+     * 
+     * @return perimeter
+     */
+    public double getPerimeter()
+    {
+        return side * ( 2 + Math.sqrt( 2 ) );
+    }
 
 }

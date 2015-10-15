@@ -10,39 +10,47 @@
  * 
  * @author Sources - Kushal Tirumala
  */
-public class EquilateralTriangle extends AbstractTriangle {
-	/**
-	 * no parameter constructor
-	 */
-	public EquilateralTriangle() {
-		// no parameters
-	}
+public class EquilateralTriangle extends AbstractTriangle
+{
+    /**
+     * no parameter constructor
+     */
+    public EquilateralTriangle()
+    {
+        // no parameters
+    }
 
-	/**
-	 * parameter constructor
-	 * 
-	 * @param side
-	 *            one side of equilateral triangle
-	 */
-	public EquilateralTriangle(double side) {
-		super(side);
-	}
 
-	/**
-	 * area of triangle
-	 * 
-	 * @return area
-	 */
-	public double getArea() {
-		return (Math.sqrt(3) * side * side) / 4;
-	}
+    /**
+     * parameter constructor
+     * 
+     * @param side
+     *            one side of equilateral triangle
+     */
+    public EquilateralTriangle( double side )
+    {
+        super( side );
+    }
 
-	/**
-	 * perimeter of triangle
-	 * 
-	 * @return perimeter
-	 */
-	public double getPerimeter() {
-		return 3 * side;
-	}
+
+    /**
+     * area of triangle
+     * 
+     * @return area
+     */
+    public double getArea()
+    {
+        return ( Math.sqrt( 3 ) * side * side ) / 4;
+    }
+
+
+    /**
+     * perimeter of triangle
+     * 
+     * @return perimeter
+     */
+    public double getPerimeter()
+    {
+        return 3 * side;
+    }
 }
