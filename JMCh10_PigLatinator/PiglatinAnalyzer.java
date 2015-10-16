@@ -1,6 +1,7 @@
 import java.util.Scanner;
- 
- 
+import java.util.StringTokenizer;
+
+
 /**
  * Pig latin analyzer class
  * 
@@ -18,15 +19,20 @@ public class PiglatinAnalyzer
      * text to analyze
      */
     private String text;
- 
- 
+    
+    /**
+     * delimeter string for later use
+     */
+    private String del = "()_+`-[]\\;'\":,./<>? \t";
+
+
     // Constructor: saves the text string
     public PiglatinAnalyzer( String text )
     {
         this.text = text;
     }
- 
- 
+
+
     /**
      * Converts a string to it piglatin form according to the following rules:
      * a. If there are no vowels in englishWord, then pigLatinWord is just
@@ -44,23 +50,30 @@ public class PiglatinAnalyzer
      */
     public String phraseToPigLatin()
     {
-        String phraseToTranslate = text;
         String translation = "";
- 
-        String[] words = phraseToTranslate.split( " " );
-        for ( int i = 0; i < words.length; i++ )
+        StringTokenizer tokenizer = new StringTokenizer( text, del, true );
+        String temp;
+
+        while ( tokenizer.hasMoreTokens() )
         {
-            String trans = wordToPigLatin( words[i] );
-            // System.out.println("I love Java");
-            System.out.println( trans );
-            translation += trans + " ";
- 
+            temp = tokenizer.nextToken();
+            if ( temp.length() > 1 )
+            {
+                translation += wordToPigLatin( temp );
+            }
+            else
+            {
+            	translation += temp;
+                if (temp.toUpperCase().equals("A") || temp.toUpperCase().equals("I")) {
+            		translation += "yay";
+            	} 
+            }
         }
- 
+
         return translation;
     }
- 
- 
+
+
     /**
      * Converts an "english" word to its piglatin form
      *
@@ -80,7 +93,7 @@ public class PiglatinAnalyzer
         {
             pigLatinWord += englishWord + "ay";
         }
-        else if ( vowel.indexOf( englishWord.charAt( 0 ) ) != -1 )
+        else if ( firstVowel( englishWord ) == 0 )
         {
             if ( Character.isLetter( englishWord.charAt( englishWord.length() - 1 ) ) )
                 pigLatinWord += englishWord + "yay";
@@ -91,31 +104,32 @@ public class PiglatinAnalyzer
         else
         {
             String start, end;
+
             int firstv = firstVowel( englishWord );
-            System.out.println( firstv );
+
             start = englishWord.substring( 0, firstv );
             end = englishWord.substring( firstv );
-            if ( firstCapitalized( englishWord ) )
+
+            if ( ifFirstCapitalized( englishWord ) )
             {
-                System.out.println( "found one yo" );
                 end = capatalize( end );
                 start = uncapatalize( start );
             }
             pigLatinWord = end + start + "ay";
         }
- 
+
         return pigLatinWord;
     }
- 
- 
+
+
     public boolean hasVowel( String word )
     {
         word = word.toLowerCase();
         return ( word.contains( "a" ) || word.contains( "e" ) || word.contains( "i" ) || word.contains( "o" )
             || word.contains( "u" ) );
     }
- 
- 
+
+
     public int firstVowel( String word )
     {
         int ans = -1;
@@ -130,48 +144,23 @@ public class PiglatinAnalyzer
         }
         return ans;
     }
- 
- 
-    public boolean firstCapitalized( String word )
+
+
+    public boolean ifFirstCapitalized( String word )
     {
         return word.toUpperCase().charAt( 0 ) == word.charAt( 0 );
     }
- 
- 
+
+
     public String capatalize( String word )
     {
         return word.toUpperCase().charAt( 0 ) + word.substring( 1 );
     }
- 
- 
+
+
     public String uncapatalize( String word )
     {
         return word.toLowerCase().charAt( 0 ) + word.substring( 1 );
     }
- 
- 
-    public String strip( String word )
-    {
-        String ans = "";
-        String[] words = word.replaceAll( "[^a-zA-Z ]", "" ).toLowerCase().split( "\\s+" );
-        for ( String oneword : words )
-        {
-            ans += oneword;
-        }
-        return ans;
-    }
- 
- 
-    public String addPunc(String punc, String word) {
-        String ans = "";
- 
-        if (punc.contains("\"")) {
-            ans+= "\"" + word + "\"";
-        }
-        if(punc.contains( "." )) {
-           ans+=".";
-        }
-         
-        return ans;
-    }
+
 }
